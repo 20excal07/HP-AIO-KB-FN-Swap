@@ -61,11 +61,12 @@ InstallKeybdHook true true
 
 ; F7 and F8 keys
 ; No idea how to swap the "Brightness Up/Down" keys.
-; Functions as-is, but you can now also press the Calculator shortcut key for F7
-; And also the "Show Desktop" shortcut key for F8
-*LAUNCH_APP2::F7
-*<#d::Send "{Blind}{F8 DownR}"
-*<#d Up::Send "{Blind}{F8 Up}"
+; Functions as-is, but you can now also press the "Show Desktop" shortcut key for F7
+; And also the Notifications shortcut key for F8
+*<#d::Send "{Blind}{F7 DownR}"
+*<#d Up::Send "{Blind}{F7 Up}"
+*<+<!<#F21::Send "{Blind}{F8 DownR}"
+*<+<!<#F21 Up::Send "{Blind}{F8 Up}"
 
 ; F9 key
 *<+<#F21::Send "{Blind}{F9 DownR}"
@@ -109,6 +110,28 @@ InstallKeybdHook true true
 	Send "{Blind}{F21 DownR}"
 	Send "{Blind}{LWin Up}"
 	Send "{Blind}{F21 Up}"
+}
+
+; NumLock key
+; This turns your number-only NumPad into a regular one
+; Press the Calculator shortcut key to toggle NumLock On/Off
+global NumLockState := GetKeyState("NumLock", "T")
+*LAUNCH_APP2::{
+	global NumLockState
+	Send "{Blind}{NumLock DownR}"
+	if NumLockState {
+		SetNumLockState "AlwaysOff"
+	} else {
+		SetNumLockState "AlwaysOn"
+	}
+	NumLockState := !NumLockState
+}
+*LAUNCH_APP2 Up::Send "{Blind}{NumLock Up}"
+*NumLock::{
+	global NumLockState
+	if !NumLockState {
+		Send "{Blind}{NumLock Up}"
+	}
 }
 
 ReleaseF1toF6(Key) {
