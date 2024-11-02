@@ -1,36 +1,62 @@
-﻿#Requires AutoHotkey v2.0
+#Requires AutoHotkey v2.0
 InstallKeybdHook true true
 
 ; FN key function swap for HP AIO keyboards
 
 ; F1 key
 *VOLUME_MUTE::{
+	ReleaseF1toF6("F1")
 	Send "{Blind}{F1 DownR}"
 	Send "{Blind}{F1 Up}"
 }
 *F1::VOLUME_MUTE
 
 ; F2 key
-*VOLUME_DOWN::F2
+*VOLUME_DOWN::{
+	ReleaseF1toF6("F2")
+	Send "{Blind}{F2 DownR}"
+}
+*VOLUME_DOWN Up::{
+	Send "{Blind}{F2 Up}"
+}
 *F2::VOLUME_DOWN
 
 ; F3 key
-*VOLUME_UP::F3
+*VOLUME_UP::{
+	ReleaseF1toF6("F3")
+	Send "{Blind}{F3 DownR}"
+}
+*VOLUME_UP Up::{
+	Send "{Blind}{F3 Up}"
+}
 *F3::VOLUME_UP
 
 ; F4 key
-*MEDIA_PREV::F4
+*MEDIA_PREV::{
+	ReleaseF1toF6("F4")
+	Send "{Blind}{F4 DownR}"
+}
+*MEDIA_PREV Up::{
+	Send "{Blind}{F4 Up}"
+}
 *F4::MEDIA_PREV
 
 ; F5 key
 *MEDIA_PLAY_PAUSE::{
+	ReleaseF1toF6("F5")
 	Send "{Blind}{F5 DownR}"
 	Send "{Blind}{F5 Up}"
 }
 *F5::MEDIA_PLAY_PAUSE
 
 ; F6 key
-*MEDIA_NEXT::F6
+*MEDIA_NEXT::{
+	ReleaseF1toF6("F6")
+	Send "{Blind}{F6 DownR}"
+}
+*MEDIA_NEXT Up::{
+	Send "{Blind}{F6 Up}"
+}
 *F6::MEDIA_NEXT
 
 ; F7 and F8 keys
@@ -83,4 +109,26 @@ InstallKeybdHook true true
 	Send "{Blind}{F21 DownR}"
 	Send "{Blind}{LWin Up}"
 	Send "{Blind}{F21 Up}"
+}
+
+ReleaseF1toF6(Key) {
+	KeyPressed := GetKeyState(Key)
+	if !KeyPressed && GetKeyState("F1") {
+		Send "{Blind}{F1 Up}"
+	}
+	if !KeyPressed && GetKeyState("F2") {
+		Send "{Blind}{F3 Up}"
+	}
+	if !KeyPressed && GetKeyState("F3") {
+		Send "{Blind}{F3 Up}"
+	}
+	if !KeyPressed && GetKeyState("F4") {
+		Send "{Blind}{F4 Up}"
+	}
+	if !KeyPressed && GetKeyState("F5") {
+		Send "{Blind}{F5 Up}"
+	}
+	if !KeyPressed && GetKeyState("F6") {
+		Send "{Blind}{F6 Up}"
+	}
 }
