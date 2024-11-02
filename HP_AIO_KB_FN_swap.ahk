@@ -121,9 +121,12 @@ global NumLockState := GetKeyState("NumLock", "T")
 	Send "{Blind}{NumLock DownR}"
 	if NumLockState {
 		SetNumLockState "AlwaysOff"
+		Tooltip "NumLock is OFF"
 	} else {
 		SetNumLockState "AlwaysOn"
+		Tooltip "NumLock is ON"
 	}
+	SetTimer () => ToolTip(), -1000
 	NumLockState := !NumLockState
 }
 *LAUNCH_APP2 Up::Send "{Blind}{NumLock Up}"
