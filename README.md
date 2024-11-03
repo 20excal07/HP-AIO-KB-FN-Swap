@@ -11,3 +11,13 @@ A few motes:
   - Otherwise, the original F7 and F8 keys work as-is and you'd need to hold down the Fn key to get them.
 - As a bonus, this script also turns your NumPad into a regular one - it'll no longer be just for numbers. :p
   - Press the Calculator shortcut key to toggle the NumLock on/off. 
+
+## How the Numpad thingy works
+The script keeps its own internal NumLock state based on the system's NumLock state when the script was started.
+Whenever you toggle NumLock with the Calculator key, all you're doing is changing the script's lock state,
+while the system's NumLock state is left untouched. When the script exits (i.e. you turn your PC off),
+the system's NumLock state is sync'd to that of the script's state, so the next time the script runs, it knows
+what state it was last in (assuming you never touch the Numpad keys during that gap).
+
+This avoids having to fight with the fact that the keyboard will ALWAYS send a "NumLock ON" event whenever it sees
+that the system's NumLock is actually off, reducing input spam.
