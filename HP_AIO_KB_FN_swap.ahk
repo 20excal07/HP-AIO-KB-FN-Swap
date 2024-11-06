@@ -7,6 +7,8 @@ InstallKeybdHook true true
 *VOLUME_MUTE::{
 	ReleaseF1toF6("F1")
 	Send "{Blind}{F1 DownR}"
+}
+*VOLUME_MUTE Up::{
 	Send "{Blind}{F1 Up}"
 }
 *F1::VOLUME_MUTE
@@ -45,6 +47,8 @@ InstallKeybdHook true true
 *MEDIA_PLAY_PAUSE::{
 	ReleaseF1toF6("F5")
 	Send "{Blind}{F5 DownR}"
+}
+*MEDIA_PLAY_PAUSE Up::{
 	Send "{Blind}{F5 Up}"
 }
 *F5::MEDIA_PLAY_PAUSE
@@ -71,7 +75,7 @@ InstallKeybdHook true true
 ; --F9 key--
 *<+<#F21::Send "{Blind}{F9 DownR}"
 *<+<#F21 Up::Send "{Blind}{F9 Up}"
-*F9::{
+*F9 Up::{
 	Send "{Blind}{LShift DownR}"
 	Send "{Blind}{LWin DownR}"
 	Send "{Blind}{F21 DownR}"
@@ -83,7 +87,7 @@ InstallKeybdHook true true
 ; --F10 key--
 *<#Tab::Send "{Blind}{F10 DownR}"
 *<#Tab Up::Send "{Blind}{F10 Up}"
-*F10::{
+*F10 Up::{
 	Send "{Blind}{LWin DownR}"
 	Send "{Blind}{Tab DownR}"
 	Send "{Blind}{LWin Up}"
@@ -93,7 +97,7 @@ InstallKeybdHook true true
 ; --F11 key--
 *<^<#F21::Send "{Blind}{F11 DownR}"
 *<^<#F21 Up::Send "{Blind}{F11 Up}"
-*F11::{
+*F11 Up::{
 	Send "{Blind}{LCtrl DownR}"
 	Send "{Blind}{LWin DownR}"
 	Send "{Blind}{F21 DownR}"
@@ -105,7 +109,7 @@ InstallKeybdHook true true
 ; --F12 key--
 *<#F21::Send "{Blind}{F12 DownR}"
 *<#F21 Up::Send "{Blind}{F12 Up}"
-*F12::{
+*F12 Up::{
 	Send "{Blind}{LWin DownR}"
 	Send "{Blind}{F21 DownR}"
 	Send "{Blind}{LWin Up}"
