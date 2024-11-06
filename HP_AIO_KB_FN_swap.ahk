@@ -126,12 +126,23 @@ OnExit SaveLastNumLockState
 *LAUNCH_APP2::{
 	global NumLockState
 	if NumLockState {
+		if GetKeyState("NumLock", "T") {
+			Send "{Blind}{NumLock DownR}"
+		}
 		Tooltip "NumLock is OFF"
 	} else {
+		if !GetKeyState("NumLock", "T") {
+			Send "{Blind}{NumLock DownR}"
+		}
 		Tooltip "NumLock is ON"
 	}
 	SetTimer () => ToolTip(), -1000
 	NumLockState := !NumLockState
+}
+*LAUNCH_APP2 Up::{
+	if GetKeyState("NumLock") {
+		Send "{Blind}{NumLock Up}"
+	}
 }
 *Numpad0::{
 	if !NumLockState 
